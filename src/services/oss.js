@@ -1,7 +1,7 @@
 // import OSS from './aliyun-oss-sdk.min'
 import dayjs from 'dayjs'
 
-const OSS = window.OSS
+/* global OSS */
 
 export default class OSSService {
   constructor (options = {
