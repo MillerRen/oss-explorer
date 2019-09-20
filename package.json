@@ -21,9 +21,12 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
+    "dayjs": "^1.8.16",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "file-icon-vectors": "^1.0.0",
     "lint-staged": "^8.1.5",
+    "vanilla-lazyload": "^12.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
