@@ -5,7 +5,7 @@
           v-if="imageTypes[ext]"
           class="media-object-img"
           :src="file.dataURL"
-          :data-src="file.url+'?x-oss-process=image/auto-orient,1/resize,m_pad,w_200,h_200/quality,q_100'"
+          :data-src="thumb"
           @click="$emit('select', file)">
         <!-- <video
           v-if="videoTypes[ext]"
@@ -80,6 +80,10 @@ export default {
   computed: {
     ext () {
       return this.file.name.split('.').pop().toLowerCase()
+    },
+    thumb () {
+      let process = '?x-oss-process=image/auto-orient,1/resize,m_pad,w_200,h_200/quality,q_100'
+      return this.ext === 'svg' ? this.file.url : this.file.url + process
     }
   },
   methods: {
