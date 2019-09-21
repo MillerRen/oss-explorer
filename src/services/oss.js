@@ -31,6 +31,7 @@ export default class OSSService {
         if (res.status !== 200) {
           throw new Error(data.message)
         }
+        data = data.data || data
         this.expiration = data.expiration
         this.client = new OSS(data)
         return this.client
