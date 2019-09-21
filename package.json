@@ -8,6 +8,8 @@
     "build": "vue-cli-service build",
     "library": "vue-cli-service build --target lib ./src/explorer.js",
     "deploy": "npm run build && gh-pages -d dist --remote origin",
+    "preversion": "npm run library",
+    "postversion": "npm publish",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
