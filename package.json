@@ -2,6 +2,7 @@
   "name": "oss-explorer",
   "version": "1.0.0",
   "private": false,
+  "main": "dist/oss-explorer.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
