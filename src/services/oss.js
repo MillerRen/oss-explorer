@@ -10,16 +10,31 @@ export default class OSSService {
   }) {
     this.options = options
     this.currentPath = ''
-    this.expiration = ''
+    this.config = {}
     this.client = null
     this.prefixes = []
     this.objects = []
+  }
+
+  callMethod (...args) {
+    return this.getClient()
+      .then((client) => {
+        return client[args.shift()].apply(client, args)
+      })
   }
 
   getClient () {
     if (this.client && dayjs(this.expiration).isAfter(dayjs())) {
       return Promise.resolve(this.client)
     }
+    return this.getConfig()
+      .then((config) => {
+        this.client = new OSS(config)
+        return this.client
+      })
+  }
+
+  getConfig () {
     return OSS.urllib.request(this.options.stsPath, {
       method: 'GET',
       headers: {
@@ -28,13 +43,12 @@ export default class OSSService {
     })
       .then((res) => {
         let data = JSON.parse(res.data)
+        data = data.data || data
         if (res.status !== 200) {
           throw new Error(data.message)
         }
-        data = data.data || data
-        this.expiration = data.expiration
-        this.client = new OSS(data)
-        return this.client
+        this.config = data
+        return data
       })
   }
 
@@ -105,12 +119,5 @@ export default class OSSService {
 
   deleteMulti (objects) {
     return this.callMethod('deleteMulti', objects)
-  }
-
-  callMethod (...args) {
-    return this.getClient()
-      .then((client) => {
-        return client[args.shift()].apply(client, args)
-      })
   }
 }
