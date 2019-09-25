@@ -27,6 +27,11 @@
           <button class="btn btn-sm btn-link" @dblclick="$emit('remove', o)" title="双击删除">删除</button>
         </td>
       </tr>
+      <tr>
+        <td colspan="5">
+          <button v-if="nextMarker" class="btn btn-block btn-link" @click.prevent="$emit('more')">加载更多</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>

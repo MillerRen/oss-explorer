@@ -17,7 +17,7 @@
       </template>
     </div>
     <div class="row">
-      <button v-if="nextMarker" class="btn btn-block btn-link" @click.prevent="more">加载更多</button>
+      <button v-if="nextMarker" class="btn btn-block btn-link" @click.prevent="$emit('more')">加载更多</button>
     </div>
   </div>
 </template>

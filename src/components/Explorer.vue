@@ -25,6 +25,7 @@
         @cd="cd"
         @select="select"
         @remove="remove"
+        @more="more"
       />
       <grid
         v-if="view=='grid'"
@@ -35,6 +36,7 @@
         @cd="cd"
         @select="select"
         @remove="remove"
+        @more="more"
       />
       <modal
         v-if="showUploader"
