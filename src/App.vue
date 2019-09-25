@@ -11,7 +11,7 @@
      :path="path"
      :privatePath="privatePath"
      :limit="5"
-     :maxKeys="1000"
+     :maxKeys="10"
      @select="onSelect">
    </explorer>
   </div>
