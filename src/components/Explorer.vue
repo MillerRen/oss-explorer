@@ -136,7 +136,7 @@ export default {
     }
   },
   created () {
-    this.prefix = this.path + dayjs().format('YYYY-MM/')
+    this.prefix = this.path
     this.client = new OSS({
       delimiter: this.delimiter,
       maxKeys: this.maxKeys,
