@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <a v-if="!token" :href="link" class="btn btn-success">登录</a>
+    <!-- <a v-if="!token" :href="link" class="btn btn-success">登录</a> -->
     <explorer
       v-if="token"
      v-model="objects"
@@ -50,7 +50,7 @@ export default {
   },
   created () {
     this.token = qs.parse(location.search, { ignoreQueryPrefix: true }).token
-    if (!this.token) return
+    if (!this.token) return location.replace(this.link)
     var decoded = jwt.decode(this.token)
     this.path = `${decoded.company}/`
     this.privatePath = `${decoded.user_id}/`
