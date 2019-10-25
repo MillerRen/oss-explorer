@@ -38,7 +38,7 @@ export default {
       token: '',
       path: '',
       privatePath: '',
-      stsPath: 'https://1517151847053460.us-west-1.fc.aliyuncs.com/2016-08-15/proxy/auth/oss/',
+      stsPath: 'https://1517151847053460.cn-beijing.fc.aliyuncs.com/2016-08-15/proxy/auth/sts/',
       objects: [],
       meta: {},
       link
