@@ -24,7 +24,8 @@ import qs from 'qs'
 
 const clientId = '61c1b757d0bcf064bcd5'
 const authorizeUri = 'https://github.com/login/oauth/authorize'
-const link = `${authorizeUri}?client_id=${clientId}`
+const redirectUri = btoa(location.href)
+const link = `${authorizeUri}?client_id=${clientId}&state=${redirectUri}`
 
 export default {
   name: 'app',
@@ -37,7 +38,7 @@ export default {
       token: '',
       path: '',
       privatePath: '',
-      stsPath: 'https://1517151847053460.cn-beijing.fc.aliyuncs.com/2016-08-15/proxy/auth/sts/',
+      stsPath: 'https://1517151847053460.us-west-1.fc.aliyuncs.com/2016-08-15/proxy/auth/oss/',
       objects: [],
       meta: {},
       link
