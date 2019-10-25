@@ -67,6 +67,7 @@ export default {
             icon: 'sort-by-attributes-alt',
             className: 'dropdown-toggle',
             open: false,
+            pullRight: true,
             options: [
               {
                 name: 'lastModified-desc',
@@ -90,6 +91,7 @@ export default {
             name: 'view',
             value: 'grid',
             type: 'radio',
+            pullRight: true,
             options: [
               {
                 name: 'grid',
@@ -100,24 +102,6 @@ export default {
                 name: 'list',
                 label: '按列表显示',
                 icon: 'th-list'
-              }
-            ]
-          },
-          {
-            name: 'userspace',
-            pullRight: true,
-            value: 'public',
-            type: 'radio',
-            options: [
-              {
-                name: 'public',
-                label: '公共文件夹',
-                icon: 'home'
-              },
-              {
-                name: 'private',
-                label: '我的文件夹',
-                icon: 'user'
               }
             ]
           },

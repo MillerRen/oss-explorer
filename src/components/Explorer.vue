@@ -7,7 +7,6 @@
         @hide="hide"
         @mkdir="mkdir"
         @refresh="list"
-        @userspace="changeUserspace"
         @view="changeView"
         @sort="sort"
         :multiple="multiple"
@@ -17,27 +16,32 @@
     <breadcrumb :prefix="prefix" @change="cd" />
     <message ref="message" />
     <div class="panel-body" ref="container">
-      <list
-        v-if="view=='list'"
-        v-model="value"
-        :files="files"
-        :nextMarker="nextMarker"
-        @cd="cd"
-        @select="select"
-        @remove="remove"
-        @more="more"
-      />
-      <grid
-        v-if="view=='grid'"
-        v-model="value"
-        :files="files"
-        :nextMarker="nextMarker"
-        :prefix="prefix"
-        @cd="cd"
-        @select="select"
-        @remove="remove"
-        @more="more"
-      />
+      <div class="col-sm-2">
+        <Sidebar :spaces="spaces" v-model="prefix" @input="refresh" />
+      </div>
+      <div class="col-sm-10">
+        <list
+          v-if="view=='list'"
+          v-model="value"
+          :files="files"
+          :nextMarker="nextMarker"
+          @cd="cd"
+          @select="select"
+          @remove="remove"
+          @more="more"
+        />
+        <grid
+          v-if="view=='grid'"
+          v-model="value"
+          :files="files"
+          :nextMarker="nextMarker"
+          :prefix="prefix"
+          @cd="cd"
+          @select="select"
+          @remove="remove"
+          @more="more"
+        />
+      </div>
       <modal
         v-if="showUploader"
         title="上传文件"
@@ -63,6 +67,7 @@ import OSS from '../services/oss'
 import LazyLoad from 'vanilla-lazyload'
 import Toolbar from './Toolbar.vue'
 import Breadcrumb from './Breadcrumb.vue'
+import Sidebar from './Sidebar.vue'
 import Grid from './Grid.vue'
 import List from './List.vue'
 import Uploader from './Uploader.vue'
@@ -74,6 +79,7 @@ export default {
   components: {
     Toolbar,
     Breadcrumb,
+    Sidebar,
     Grid,
     List,
     Modal,
@@ -128,6 +134,7 @@ export default {
   data () {
     return {
       files: [],
+      spaces: [], // 可以操作的文件夹
       prefix: '', // 当前文件夹
       nextMarker: null, // 最后一个文件标记
       uploads: [],
@@ -317,6 +324,10 @@ export default {
     this.$on('lazyload', () => {
       this.lazyLoad.update()
     })
+    this.client.getClient()
+      .then((client) => {
+        this.spaces = client.options.path.split(',')
+      })
     this.list()
   },
   beforeDestroy () {
