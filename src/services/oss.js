@@ -24,7 +24,7 @@ export default class OSSService {
   }
 
   getClient () {
-    if (this.client && dayjs(this.expiration).isAfter(dayjs())) {
+    if (this.client && dayjs(this.client.options.expiration).isAfter(dayjs())) {
       return Promise.resolve(this.client)
     }
     return this.getConfig()
