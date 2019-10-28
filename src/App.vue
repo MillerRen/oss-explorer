@@ -9,7 +9,6 @@
      :stsPath="stsPath"
      :multiple="true"
      :path="path"
-     :privatePath="privatePath"
      :limit="5"
      :maxKeys="10"
      @select="onSelect">
@@ -37,7 +36,6 @@ export default {
       clientConfig: null,
       token: '',
       path: '',
-      privatePath: '',
       stsPath: 'https://1517151847053460.cn-beijing.fc.aliyuncs.com/2016-08-15/proxy/auth/sts/',
       objects: [],
       meta: {},
@@ -54,7 +52,6 @@ export default {
     if (!this.token) return location.replace(this.link)
     var decoded = jwt.decode(this.token)
     this.path = `${decoded.company}/`
-    this.privatePath = `${decoded.user_id}/`
   }
 }
 </script>

@@ -120,10 +120,6 @@ export default {
       type: String,
       default: ''
     },
-    privatePath: {
-      type: String,
-      default: ''
-    },
     value: {
       type: Array,
       default () {
@@ -152,12 +148,6 @@ export default {
     })
   },
   methods: {
-    changeUserspace (userspace) {
-      this.prefix = userspace === 'public' ? this.path : this.privatePath
-      this.nextMarker = null
-      this.files = []
-      return this.list()
-    },
     changeView (view) {
       this.view = view
       // 等待视图更新完毕再重新加载图片
