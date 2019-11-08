@@ -1,6 +1,6 @@
 <template>
-  <div class="explorer-sidebar  row">
-    <ul class="nav nav-pills nav-stacked">
+  <div class="explorer-sidebar">
+    <ul class="nav">
       <li v-for="space in spaces" :class="{active:~value.indexOf(space)}" :key="space">
         <a href="" @click.prevent="$emit('input', space)">{{space}}</a>
       </li>
@@ -22,3 +22,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

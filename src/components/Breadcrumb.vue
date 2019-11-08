@@ -1,6 +1,6 @@
 <template lang="html">
   <ol class="breadcrumb explorer-breadcrumb">
-    <li></li>
+    <li><i class="glyphicon glyphicon-home"></i></li>
     <li v-for="(p, index) in path" :key="p">
       <a :href="p" @click.prevent="openFolder(index)">{{p}}</a>
     </li>
@@ -32,9 +32,6 @@ export default {
 
 <style lang="css">
 .explorer-breadcrumb {
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
   border-radius: 0;
 }
 </style>

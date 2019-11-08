@@ -13,13 +13,17 @@
         :prefix="prefix"
       />
     </div>
-    <breadcrumb :prefix="prefix" @change="cd" />
     <message ref="message" />
     <div class="panel-body" ref="container">
       <div class="col-sm-2">
-        <Sidebar :spaces="spaces" v-model="prefix" @input="refresh" />
+        <Sidebar
+        class="row"
+        :spaces="spaces"
+        v-model="prefix"
+        @input="refresh" />
       </div>
-      <div class="col-sm-10">
+      <div class="col-sm-10" style="box-shadow: -1px 0px 0px #ddd">
+        <breadcrumb :prefix="prefix" @change="cd" class="row" />
         <list
           v-if="view=='list'"
           v-model="value"
@@ -332,7 +336,6 @@ export default {
 }
 .explorer .panel-body {
   position:relative;
-  height:500px;
-  overflow-y:scroll;
+  padding: 0;
 }
 </style>
